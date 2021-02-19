@@ -7,11 +7,11 @@
 // const summarizeUser = (userName, userAge, userHasHobbies) => {
 
 //     return ( 'Name is ' +
-//      userName + 
-//      ', age is ' + 
-//      userAge + 
-//      ' and the user has hobbies: ' + 
-//      userHasHobbies 
+//      userName +
+//      ', age is ' +
+//      userAge +
+//      ' and the user has hobbies: ' +
+//      userHasHobbies
 //      );
 
 // }
@@ -27,22 +27,34 @@
 // console.log(summarizeUser(name, age, hasHobbies));
 
 const person = {
-    name: 'Rainer',
-    age: 28,
-    greet() {
-        console.log('Hi, I am ' + this.name)
-    }
+  name: "Rainer",
+  age: 28,
+  greet() {
+    console.log("Hi, I am " + this.name);
+  },
 };
 
+const copiedPerson = {...person}
+console.log(copiedPerson);
 person.greet();
 console.log(person);
 
-const hobbies = ['Coding', 'Games', 'Anime'];
+const hobbies = ["Coding", "Games", "Anime"];
 // for (let hobby of hobbies) {
 //     console.log(hobby);
 // };
 
-console.log(hobbies.map(hobby => 'Hobby: ' + hobby));
+// console.log(hobbies.map(hobby => 'Hobby: ' + hobby));
 
-hobbies.push('VTubers');
-console.log(hobbies);
+// hobbies.push('VTubers');
+// console.log(hobbies);
+
+// const copiedArray = hobbies.slice();
+const copiedArray = [...hobbies];
+console.log(copiedArray);
+
+const toArray = (...args) => {
+    return args;
+}
+
+console.log(toArray(1,2,3,4,5));
