@@ -29,7 +29,7 @@
 const person = {
     name: 'Rainer',
     age: 28,
-    greet () {
+    greet() {
         console.log('Hi, I am ' + this.name)
     }
 };
@@ -43,3 +43,6 @@ const hobbies = ['Coding', 'Games', 'Anime'];
 // };
 
 console.log(hobbies.map(hobby => 'Hobby: ' + hobby));
+
+hobbies.push('VTubers');
+console.log(hobbies);
