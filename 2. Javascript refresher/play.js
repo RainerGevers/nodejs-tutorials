@@ -34,27 +34,38 @@ const person = {
   },
 };
 
-const copiedPerson = {...person}
-console.log(copiedPerson);
-person.greet();
-console.log(person);
-
-const hobbies = ["Coding", "Games", "Anime"];
-// for (let hobby of hobbies) {
-//     console.log(hobby);
-// };
-
-// console.log(hobbies.map(hobby => 'Hobby: ' + hobby));
-
-// hobbies.push('VTubers');
-// console.log(hobbies);
-
-// const copiedArray = hobbies.slice();
-const copiedArray = [...hobbies];
-console.log(copiedArray);
-
-const toArray = (...args) => {
-    return args;
+const printName = ({ name, age }) => {
+    console.log(name, age);
 }
 
-console.log(toArray(1,2,3,4,5));
+printName(person);
+
+const {name, age} = person;
+console.log(name, age);
+
+// const copiedPerson = {...person}
+// console.log(copiedPerson);
+// person.greet();
+// console.log(person);
+
+const hobbies = ["Coding", "Games", "Anime"];
+const [hobby1, hobby2] = hobbies;
+console.log(hobby1, hobby2)
+// // for (let hobby of hobbies) {
+// //     console.log(hobby);
+// // };
+
+// // console.log(hobbies.map(hobby => 'Hobby: ' + hobby));
+
+// // hobbies.push('VTubers');
+// // console.log(hobbies);
+
+// // const copiedArray = hobbies.slice();
+// const copiedArray = [...hobbies];
+// console.log(copiedArray);
+
+// const toArray = (...args) => {
+//     return args;
+// }
+
+// console.log(toArray(1,2,3,4,5));
