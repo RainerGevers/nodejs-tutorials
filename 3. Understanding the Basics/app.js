@@ -1,5 +1,6 @@
 const http = require('http');
 const fs = require('fs');
+const { brotliDecompressSync } = require('zlib');
 
 function rqListener(req, res) {
     // console.log(req.url, req.method, req.headers);
@@ -15,7 +16,16 @@ function rqListener(req, res) {
         return res.end();
     }
     if (url === '/message' && method === 'POST') {
-        fs.writeFileSync('message.txt', 'DUMMY');
+        const body = [];
+        req.on('data', (chunk) => {
+            console.log(chunk);
+            body.push(chunk);
+        });
+        req.on('end', () => {
+            const parsedBody = Buffer.concat(body).toString();
+            const message = parsedBody.split('=')[1];
+            fs.writeFileSync('message.txt', message);
+        });
         res.writeHead(302, {'Location': '/'});
         return res.end();
 
