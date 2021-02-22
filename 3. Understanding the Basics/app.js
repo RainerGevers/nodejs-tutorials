@@ -1,6 +1,5 @@
 const http = require('http');
 const fs = require('fs');
-const { brotliDecompressSync } = require('zlib');
 
 function rqListener(req, res) {
     // console.log(req.url, req.method, req.headers);
@@ -24,9 +23,10 @@ function rqListener(req, res) {
         return req.on('end', () => {
             const parsedBody = Buffer.concat(body).toString();
             const message = parsedBody.split('=')[1];
-            fs.writeFileSync('message.txt', message);
-            res.writeHead(302, {'Location': '/'});
-            return res.end();
+            fs.writeFile('message.txt', message, () => {
+                res.writeHead(302, {'Location': '/'});
+                return res.end();
+            });
         });
         
 
@@ -45,4 +45,4 @@ const server = http.createServer(rqListener);
 //    
 //});
 
-server.listen(3000);
+server.listen(4100, '0.0.0.0');
