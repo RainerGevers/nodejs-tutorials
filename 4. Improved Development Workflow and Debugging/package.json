@@ -1,6 +1,6 @@
 {
   "name": "nodejs-complete-guide",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Complete Node.js Guide",
   "main": "app.js",
   "scripts": {
@@ -9,5 +9,8 @@
     "start-server": "node app.js"
   },
   "author": "Maximilian Schwarzmüller",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }
