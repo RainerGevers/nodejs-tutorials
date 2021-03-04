@@ -10,8 +10,10 @@ const app = express();
 
 // app.set('view engine','pug');
 
-app.engine("handlebars", expressHbs({layoutsDir: 'views/layouts/', defaultLayout: 'main-layout'}));
-app.set("view engine", "handlebars");
+// app.engine("handlebars", expressHbs({layoutsDir: 'views/layouts/', defaultLayout: 'main-layout'}));
+// app.set("view engine", "handlebars");
+
+app.set('view engine', 'ejs')
 app.set("views", "views"); // Not necessary, already default
 
 app.use(bodyParser.urlencoded({ extended: false }));
