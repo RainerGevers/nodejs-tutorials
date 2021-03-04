@@ -10,7 +10,7 @@ const app = express();
 
 // app.set('view engine','pug');
 
-app.engine("handlebars", expressHbs());
+app.engine("handlebars", expressHbs({layoutsDir: 'views/layouts/', defaultLayout: 'main-layout'}));
 app.set("view engine", "handlebars");
 app.set("views", "views"); // Not necessary, already default
 
@@ -21,7 +21,7 @@ app.use("/admin", adminData.routes);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
-  res.status(404).render("404");
+  res.status(404).render("404", {pageTitle: 'Page not Found'});
 });
 
 app.listen(3000);
