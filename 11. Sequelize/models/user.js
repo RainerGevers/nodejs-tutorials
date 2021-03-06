@@ -2,28 +2,18 @@ const { DataTypes, Sequelize } = require("sequelize");
 
 const sequalize = require("../util/database");
 
-const Product = sequalize.define(
-    "product",
+const User = sequalize.define(
+    "user",
     {
         uuid: {
             type: DataTypes.UUID,
             defaultValue: Sequelize.UUIDV4,
         },
-        title: {
+        name: {
             type: DataTypes.STRING,
-            allowNull: false,
         },
-        price: {
-            type: DataTypes.DOUBLE,
-            allowNull: false,
-        },
-        imageUrl: {
+        email: {
             type: DataTypes.STRING,
-            allowNull: false,
-        },
-        description: {
-            type: DataTypes.TEXT,
-            allowNull: false,
         },
         createdAt: {
             type: DataTypes.DATE(6),
@@ -36,9 +26,7 @@ const Product = sequalize.define(
             defaultValue: Sequelize.NOW,
         },
     },
-    {
-        paranoid: true,
-    }
+    { paranoid: true }
 );
 
-module.exports = Product;
+module.exports = User;
