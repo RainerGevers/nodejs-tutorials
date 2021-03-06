@@ -2,9 +2,15 @@ const { DataTypes, Sequelize } = require("sequelize");
 
 const sequalize = require("../util/database");
 
-const Cart = sequalize.define(
-    "cart",
+const Order = sequalize.define(
+    "order",
     {
+        id: {
+            type: DataTypes.BIGINT,
+            primaryKey: true,
+            autoIncrement: true,
+            allowNull: false
+        },
         uuid: {
             type: DataTypes.UUID,
             defaultValue: Sequelize.UUIDV4,
@@ -20,7 +26,16 @@ const Cart = sequalize.define(
             defaultValue: Sequelize.NOW,
         },
     },
-    { paranoid: true }
+    { 
+        paranoid: true,
+        // indexes: [
+        //     // Create a unique index on email
+        //     {
+        //       unique: true,
+        //       fields: ['cartId', 'productId', 'deletedAt']
+        //     },
+        // ]
+    }
 );
 
-module.exports = Cart;
+module.exports = Order;
