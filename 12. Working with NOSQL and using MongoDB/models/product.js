@@ -1,44 +1,22 @@
-const { DataTypes, Sequelize } = require("sequelize");
+const getDb = require("../util/database").getDb;
 
-const sequalize = require("../util/database");
-
-const Product = sequalize.define(
-    "product",
-    {
-        uuid: {
-            type: DataTypes.UUID,
-            defaultValue: Sequelize.UUIDV4,
-        },
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        price: {
-            type: DataTypes.DOUBLE,
-            allowNull: false,
-        },
-        imageUrl: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        description: {
-            type: DataTypes.TEXT,
-            allowNull: false,
-        },
-        createdAt: {
-            type: DataTypes.DATE(6),
-            allowNull: false,
-            defaultValue: Sequelize.NOW,
-        },
-        updatedAt: {
-            type: DataTypes.DATE(6),
-            allowNull: false,
-            defaultValue: Sequelize.NOW,
-        },
-    },
-    {
-        paranoid: true,
+class Product {
+    constructor(title, price, description, imageUrl) {
+        this.title = title;
+        this.price = price;
+        this.description = description;
+        this.imageUrl = imageUrl;
     }
-);
+
+    save() {
+        const db = getDb();
+        return db.collection("products")
+            .insertOne(this)
+            .then((result) => {
+                console.log(result);
+            })
+            .catch((err) => console.log(err));
+    }
+}
 
 module.exports = Product;
