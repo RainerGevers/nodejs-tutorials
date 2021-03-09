@@ -41,9 +41,9 @@ User.hasOne(Cart);
 Cart.belongsTo(User);
 Cart.belongsToMany(Product, { through: { model: CartItem, unique: false } });
 Product.belongsToMany(Cart, { through: { model: CartItem, unique: false } });
-Order.belongsTo(User, {through: {unique: false}});
+Order.belongsTo(User, { through: { unique: false } });
 User.hasMany(Order);
-Order.belongsToMany(Product,{ through: { model: OrderItem, unique: false }});
+Order.belongsToMany(Product, { through: { model: OrderItem, unique: false } });
 
 sequalize
     .sync({ alter: { drop: false } })
